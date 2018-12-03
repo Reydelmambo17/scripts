@@ -39,6 +39,20 @@ do
 eof
 			mkdir -p /var/www/$a/public_html
 			cat > /var/www/$a/public_html/index.html << eof
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>w2012r2.ns.msn.com</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
 <html>
 	<body>
 		<h1>Funciona!!!!</h1>
