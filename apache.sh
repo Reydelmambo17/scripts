@@ -4,10 +4,10 @@ dpkg -s apache2 &> /dev/null
 if [ $? -eq 1 ]; then
 	echo -e "\e[1m\e[31mEl paquete apache2 no esta instalado, se dispondra a su instalación\e[0m"
 	apt-get install apache2 -y >> /dev/null
-
 else
 	echo -e "\e[1m\e[32mEl paquete apache2 ya esta instalado, se continuara con el script\e[0m"
 fi
+
 if [ $# -eq 0 ]; then
 	read -p "Introduzca el dominio del sitio web crear: " dominio
 	lista=$dominio
