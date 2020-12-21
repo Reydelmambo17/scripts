@@ -5,10 +5,10 @@ if [ $? -eq 1 ]; then
 	echo -e "\e[1m\e[31mEl paquete bind9 no esta instalado, se dispondra a su instalación\e[0m"
 	apt-get install bind9 -y >> /dev/null
 	mkdir -p /etc/bind/dominios
-	cat /etc/resolv.conf | grep "nameserver 127.0.0.1" >> /dev/null
-	if [ $? -eq 1 ]; then
-		echo nameserver 127.0.0.1 >> /etc/resolv.conf
-	fi
+	echo nameserver 127.0.0.1 > /etc/resolv.conf
+	sed -i.bak 's/\/\/ forwarders {/forwarders {/g ' /etc/bind/named.conf.options
+	sed -i.bak 's/\/\/ \t0.0.0.0;/\t8.8.8.8/g ' /etc/bind/named.conf.options
+	sed -i.abk 's/\/\/ };/};/g ' /etc/bind/named.conf.options
 else
 	echo -e "\e[1m\e[32mEl paquete bind9 ya esta instalado, se continuara con el script\e[0m"
 fi
